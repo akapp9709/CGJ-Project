@@ -11,11 +11,12 @@ public class PlayerController : MonoBehaviour
 
     [SerializeField] private float playerSpeed = 3, jumpForce = 10, inAirSpeed = 1.5f, groundCheckDistance = 0.1f;
     [SerializeField] private float gravity = 10;
-    public bool _grounded;
+    public bool _grounded, _jumpCooldown;
     public LayerMask groundCheckLayer;
 
     [SerializeField] private float coyoteTime = 0.2f;
     private float coyoteCounter;
+    private Timer _jumpTimer;
 
     private void OnDrawGizmos()
     {
@@ -77,6 +78,7 @@ public class PlayerController : MonoBehaviour
     //Jump Method
     public void Jump(InputAction.CallbackContext context)
     {
+
         // only runs if player is grounded
         if (coyoteCounter >= 0)
         {

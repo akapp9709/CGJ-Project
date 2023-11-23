@@ -11,6 +11,7 @@ public class Shooting : MonoBehaviour
     public GameObject crosshairs;
 
     [Header("Weapon Stuff")]
+    public WeaponSO _weapon;
     public GameObject weapon;
     public GameObject weaponMuzzle;
     public GameObject projectile_pistol;
@@ -22,12 +23,16 @@ public class Shooting : MonoBehaviour
     [Header("Camera Stuff")]
     [SerializeField] private Camera mainCamera;
 
+    private Timer _weaponTimer;
+    private bool _weaponCool = true;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
 
         var controls = new PacManWithGun();
+        controls.Player.Enable();
         controls.Player.Fire.started += Fire;
     }
 
@@ -35,7 +40,15 @@ public class Shooting : MonoBehaviour
     void FixedUpdate()
     {
         Aiming();
-        // Firing();
+        TickTimer(_weaponTimer, Time.deltaTime);
+    }
+
+    private void TickTimer(Timer timer, float deltaTime)
+    {
+        if (timer != null)
+        {
+            timer.Tick(deltaTime);
+        }
     }
 
     public void Aiming()
@@ -77,13 +90,27 @@ public class Shooting : MonoBehaviour
 
     private void Fire(InputAction.CallbackContext context)
     {
-        GameObject projectileGO = Instantiate(projectile_pistol, weaponMuzzle.transform.position,
+        if (!_weaponCool)
+            return;
+
+        StartCoroutine(FireRoutine());
+        _weaponCool = false;
+        _weaponTimer = new Timer(_weapon.weaponCoolDown, () => _weaponCool = true);
+    }
+
+    private IEnumerator FireRoutine()
+    {
+        for (int i = 0; i < _weapon.numberOfProjectiles; i++)
+        {
+            GameObject projectileGO = Instantiate(_weapon.projectilePrefab, weaponMuzzle.transform.position,
                     weaponMuzzle.transform.rotation);
 
-        Vector2 direction = weaponMuzzle.transform.position - transform.position;
+            Vector2 direction = weaponMuzzle.transform.right;
 
-        Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
-        projectileRb.AddForce(pistoleForce * direction);
+            Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
+            projectileRb.AddForce(_weapon.weaponForce * direction);
+            yield return new WaitForSeconds(_weapon.projectileTimeDelay);
+        }
     }
 
     public void Firing()
