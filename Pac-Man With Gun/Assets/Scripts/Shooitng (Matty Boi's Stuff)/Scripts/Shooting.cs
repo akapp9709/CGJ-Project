@@ -14,6 +14,10 @@ public class Shooting : MonoBehaviour
     public GameObject weaponMuzzle;
     public GameObject projectile_pistol;
     public float pistoleForce;
+
+    public int ammoCount;
+
+    [Header("Camera Stuff")]
     [SerializeField] private Camera mainCamera;
 
     // Start is called before the first frame update
@@ -75,10 +79,6 @@ public class Shooting : MonoBehaviour
 
             Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
             projectileRb.AddForce(pistoleForce * direction);
-
-            //add damage dealer
-
-            Destroy(gameObject, 3f);
         }
         else if (Input.GetMouseButtonDown(0) /*&& rifleEqipped*/)
         {
@@ -89,10 +89,6 @@ public class Shooting : MonoBehaviour
 
             Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
             projectileRb.AddForce(pistoleForce * direction);
-
-            //add damage dealer
-
-            Destroy(gameObject, 3f);
         }
     }
 }
