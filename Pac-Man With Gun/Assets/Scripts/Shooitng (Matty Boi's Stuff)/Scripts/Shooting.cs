@@ -51,16 +51,16 @@ public class Shooting : MonoBehaviour
         if (angle > 90 || angle < -90)
         {
             aimLocalScale.y = -1f;
-            playerLocalScale.y = -3f;
-            playerLocalScale.x = -3f;
+            playerLocalScale.y = -1f;
+            playerLocalScale.x = -1f;
 
             playerEyesLocalScale.y = -1f;
         }
         else
         {
             aimLocalScale.y = +1f;
-            playerLocalScale.y = +3f;
-            playerLocalScale.x = +3f;
+            playerLocalScale.y = +1f;
+            playerLocalScale.x = +1f;
 
             playerEyesLocalScale.y = +1f;
         }
