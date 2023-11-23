@@ -954,7 +954,7 @@ MonoBehaviour:
   playerSprite: {fileID: 89642797}
   playerSpriteEyes: {fileID: 1165320360}
   crosshairs: {fileID: 1680885329}
-  _weapon: {fileID: 11400000, guid: c7a6ccfc8489610449392557af3d6540, type: 2}
+  _weapon: {fileID: 11400000, guid: defed56f81e32b14f81fb554e3a4c9fd, type: 2}
   weapon: {fileID: 810751438}
   weaponMuzzle: {fileID: 1658965855}
   projectile_pistol: {fileID: 2242244421496450483, guid: 22e55a2ebc66d3745b51c636a7023ead, type: 3}

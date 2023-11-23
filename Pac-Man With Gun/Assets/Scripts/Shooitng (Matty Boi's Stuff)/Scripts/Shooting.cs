@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -100,34 +101,23 @@ public class Shooting : MonoBehaviour
 
     private IEnumerator FireRoutine()
     {
+        float startingAngle = -(_weapon.projectileAngleOffset * _weapon.numberOfProjectiles) / 2f;
+
         for (int i = 0; i < _weapon.numberOfProjectiles; i++)
         {
+            float angle = startingAngle + ((i + 0.5f) * _weapon.projectileAngleOffset);
+            var right = weaponMuzzle.transform.right;
             GameObject projectileGO = Instantiate(_weapon.projectilePrefab, weaponMuzzle.transform.position,
-                    weaponMuzzle.transform.rotation);
+                    Quaternion.Euler(0f, 0f, angle) * weaponMuzzle.transform.rotation);
 
-            Vector2 direction = weaponMuzzle.transform.right;
+
+
+            Vector2 direction = Quaternion.Euler(0f, 0f, angle) * new Vector2(right.x, right.y);
+            Debug.Log(weaponMuzzle.transform.right);
 
             Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
-            projectileRb.AddForce(_weapon.weaponForce * direction);
+            projectileRb.AddForce(_weapon.weaponForce * direction.normalized);
             yield return new WaitForSeconds(_weapon.projectileTimeDelay);
-        }
-    }
-
-    public void Firing()
-    {
-        if (Input.GetMouseButtonDown(0) /*&& pistolEqipped*/)
-        {
-
-        }
-        else if (Input.GetMouseButtonDown(0) /*&& rifleEqipped*/)
-        {
-            GameObject projectileGO = Instantiate(projectile_pistol, weaponMuzzle.transform.position,
-            weaponMuzzle.transform.rotation);
-
-            Vector2 direction = weaponMuzzle.transform.position - transform.position;
-
-            Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
-            projectileRb.AddForce(pistoleForce * direction);
         }
     }
 }
