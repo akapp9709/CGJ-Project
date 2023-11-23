@@ -10,7 +10,9 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
 
     [SerializeField] private float playerSpeed = 3, jumpForce = 10, inAirSpeed = 1.5f, groundCheckDistance = 0.1f;
-    private bool _grounded;
+    [SerializeField] private float gravity;
+    public bool _grounded;
+    public LayerMask groundCheckLayer;
 
     private void OnDrawGizmos()
     {
@@ -36,13 +38,19 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Ground Check
-        _grounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance);
+        _grounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundCheckLayer);
 
         var currentSpeed = _grounded ? playerSpeed : inAirSpeed;
 
         // Velocity Manipulation
         var velocity = new Vector3(direction.x, direction.y, 0f) * currentSpeed * Time.deltaTime;
+
         transform.position += velocity;
+
+        if (!_grounded)
+        {
+            _rb.AddForce(Vector3.down * gravity);
+        }
     }
 
     //Movement Method
