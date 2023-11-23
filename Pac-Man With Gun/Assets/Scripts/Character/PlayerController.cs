@@ -38,7 +38,7 @@ public class PlayerController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         // Ground Check
         _grounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundCheckLayer);
