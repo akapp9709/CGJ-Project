@@ -9,8 +9,13 @@ public class PlayerController : MonoBehaviour
     private Vector2 direction;
     private Rigidbody2D _rb;
 
-    [SerializeField] private float playerSpeed = 3, jumpForce = 10;
+    [SerializeField] private float playerSpeed = 3, jumpForce = 10, inAirSpeed = 1.5f, groundCheckDistance = 0.1f;
     private bool _grounded;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -31,10 +36,12 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Ground Check
-        _grounded = Physics2D.Raycast(transform.position, Vector2.down, 0.05f);
+        _grounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance);
+
+        var currentSpeed = _grounded ? playerSpeed : inAirSpeed;
 
         // Velocity Manipulation
-        var velocity = new Vector3(direction.x, direction.y, 0f) * playerSpeed * Time.deltaTime;
+        var velocity = new Vector3(direction.x, direction.y, 0f) * currentSpeed * Time.deltaTime;
         transform.position += velocity;
     }
 
