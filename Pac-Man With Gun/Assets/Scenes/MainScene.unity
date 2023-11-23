@@ -592,7 +592,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960122228}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0064995787, y: 0.000000017222822, z: 1.1194345e-10, w: 0.9999789}
+  m_LocalRotation: {x: -0.0064995987, y: -0.000000017197621, z: -1.1178e-10, w: 0.9999789}
   m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -719,7 +719,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410557751}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0064995787, y: 0.000000017222822, z: 1.1194345e-10, w: 0.9999789}
+  m_LocalRotation: {x: -0.0064995987, y: -0.000000017197621, z: -1.1178e-10, w: 0.9999789}
   m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -972,15 +972,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34ba279ac8f29da478af385b197b72a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 5
-  jumpForce: 600
-  inAirSpeed: 1.5
-  groundCheckDistance: 1
-  gravity: 0
+  playerSpeed: 10
+  jumpForce: 800
+  inAirSpeed: 9
+  groundCheckDistance: 0.58
+  gravity: 3
   _grounded: 0
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 55
+  coyoteTime: 0.2
 --- !u!4 &1830872490
 Transform:
   m_ObjectHideFlags: 0

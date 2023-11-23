@@ -10,9 +10,12 @@ public class PlayerController : MonoBehaviour
     private Rigidbody2D _rb;
 
     [SerializeField] private float playerSpeed = 3, jumpForce = 10, inAirSpeed = 1.5f, groundCheckDistance = 0.1f;
-    [SerializeField] private float gravity;
+    [SerializeField] private float gravity = 10;
     public bool _grounded;
     public LayerMask groundCheckLayer;
+
+    [SerializeField] private float coyoteTime = 0.2f;
+    private float coyoteCounter;
 
     private void OnDrawGizmos()
     {
@@ -42,12 +45,21 @@ public class PlayerController : MonoBehaviour
 
         var currentSpeed = _grounded ? playerSpeed : inAirSpeed;
 
+        if (_grounded)
+        {
+            coyoteCounter = coyoteTime;
+        }
+        else
+        {
+            coyoteCounter -= Time.deltaTime;
+        }
+
         // Velocity Manipulation
         var velocity = new Vector3(direction.x, direction.y, 0f) * currentSpeed * Time.deltaTime;
 
         transform.position += velocity;
 
-        if (!_grounded)
+        if (coyoteCounter < 0)
         {
             _rb.AddForce(Vector3.down * gravity);
         }
@@ -66,7 +78,7 @@ public class PlayerController : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         // only runs if player is grounded
-        if (_grounded)
+        if (coyoteCounter >= 0)
         {
             _rb.AddForce(Vector3.up * jumpForce);
         }

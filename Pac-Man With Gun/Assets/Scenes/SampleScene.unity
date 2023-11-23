@@ -961,14 +961,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeed: 10
-  jumpForce: 600
-  inAirSpeed: 3
+  jumpForce: 900
+  inAirSpeed: 8
   groundCheckDistance: 0.01
-  gravity: 0
+  gravity: 5
   _grounded: 0
   groundCheckLayer:
     serializedVersion: 2
     m_Bits: 55
+  coyoteTime: 0.2
 --- !u!4 &1364628889
 Transform:
   m_ObjectHideFlags: 0
