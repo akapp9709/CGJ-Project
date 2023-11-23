@@ -17,4 +17,6 @@ MonoBehaviour:
   projectileAngleOffset: 20
   projectileTimeDelay: 0
   weaponCoolDown: 0.5
+  magazineSize: 4
+  reloadTime: 2
   projectilePrefab: {fileID: 2242244421496450483, guid: 22e55a2ebc66d3745b51c636a7023ead, type: 3}

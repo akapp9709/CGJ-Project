@@ -24,8 +24,9 @@ public class Shooting : MonoBehaviour
     [Header("Camera Stuff")]
     [SerializeField] private Camera mainCamera;
 
-    private Timer _weaponTimer;
-    private bool _weaponCool = true;
+    private Timer _weaponTimer, _reloadTimer;
+    private bool _weaponCool = true, _loaded = true;
+    private int _shotCounter;
 
     // Start is called before the first frame update
     void Start()
@@ -41,7 +42,9 @@ public class Shooting : MonoBehaviour
     void FixedUpdate()
     {
         Aiming();
-        TickTimer(_weaponTimer, Time.deltaTime);
+        float delta = Time.deltaTime;
+        TickTimer(_weaponTimer, delta);
+        TickTimer(_reloadTimer, delta);
     }
 
     private void TickTimer(Timer timer, float deltaTime)
@@ -94,9 +97,26 @@ public class Shooting : MonoBehaviour
         if (!_weaponCool)
             return;
 
+        if (!_loaded && _weaponCool)
+            return;
+
         StartCoroutine(FireRoutine());
         _weaponCool = false;
         _weaponTimer = new Timer(_weapon.weaponCoolDown, () => _weaponCool = true);
+
+        _shotCounter++;
+        if (_shotCounter >= _weapon.magazineSize)
+        {
+            Debug.Log(_shotCounter);
+            _loaded = false;
+            _reloadTimer = new Timer(_weapon.reloadTime, Reload, (x) => Debug.Log("Reloading..."));
+        }
+    }
+
+    private void Reload()
+    {
+        _shotCounter = 0;
+        _loaded = true;
     }
 
     private IEnumerator FireRoutine()
@@ -110,10 +130,7 @@ public class Shooting : MonoBehaviour
             GameObject projectileGO = Instantiate(_weapon.projectilePrefab, weaponMuzzle.transform.position,
                     Quaternion.Euler(0f, 0f, angle) * weaponMuzzle.transform.rotation);
 
-
-
             Vector2 direction = Quaternion.Euler(0f, 0f, angle) * new Vector2(right.x, right.y);
-            Debug.Log(weaponMuzzle.transform.right);
 
             Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
             projectileRb.AddForce(_weapon.weaponForce * direction.normalized);
