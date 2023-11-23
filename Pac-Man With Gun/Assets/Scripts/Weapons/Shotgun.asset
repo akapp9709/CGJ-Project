@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   weaponForce: 100
-  numberOfProjectiles: 1
+  numberOfProjectiles: 5
   projectileAngleOffset: 0
   projectileTimeDelay: 0
   weaponCoolDown: 0.5
