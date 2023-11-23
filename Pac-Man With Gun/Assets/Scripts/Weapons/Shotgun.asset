@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponForce: 100
   numberOfProjectiles: 5
-  projectileAngleOffset: 0
+  projectileAngleOffset: 10
   projectileTimeDelay: 0
   weaponCoolDown: 0.5
   magazineSize: 6
