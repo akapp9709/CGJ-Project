@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 75829149}
   - component: {fileID: 75829150}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -217,6 +217,7 @@ GameObject:
   m_Component:
   - component: {fileID: 89642799}
   - component: {fileID: 89642798}
+  - component: {fileID: 89642800}
   m_Layer: 6
   m_Name: Player GUI
   m_TagString: Untagged
@@ -285,12 +286,47 @@ Transform:
   m_GameObject: {fileID: 89642797}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.113836266}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1830872490}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &89642800
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 89642797}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.5
 --- !u!1 &255643149
 GameObject:
   m_ObjectHideFlags: 0
@@ -385,7 +421,7 @@ GameObject:
   m_Component:
   - component: {fileID: 696435823}
   - component: {fileID: 696435824}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Face Direction GUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +504,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 810751439}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Weapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -556,8 +592,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 960122228}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0064995987, y: -0.000000017197621, z: -1.1178e-10, w: 0.9999789}
-  m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -10.113836}
+  m_LocalRotation: {x: -0.0064995787, y: 0.000000017222822, z: 1.1194345e-10, w: 0.9999789}
+  m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -573,7 +609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1165320361}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Player Face Direction
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -683,8 +719,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1410557751}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.0064995987, y: -0.000000017197621, z: -1.1178e-10, w: 0.9999789}
-  m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -10.113836}
+  m_LocalRotation: {x: -0.0064995787, y: 0.000000017222822, z: 1.1194345e-10, w: 0.9999789}
+  m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -778,7 +814,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1658965856}
   - component: {fileID: 1658965857}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Muzzle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -896,7 +932,6 @@ GameObject:
   - component: {fileID: 1830872489}
   - component: {fileID: 1830872488}
   - component: {fileID: 1830872491}
-  - component: {fileID: 1830872492}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
@@ -940,7 +975,7 @@ MonoBehaviour:
   playerSpeed: 5
   jumpForce: 600
   inAirSpeed: 1.5
-  groundCheckDistance: 0.1
+  groundCheckDistance: 1
   gravity: 0
   _grounded: 0
   groundCheckLayer:
@@ -955,7 +990,7 @@ Transform:
   m_GameObject: {fileID: 1830872487}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: -0.113836266}
+  m_LocalPosition: {x: 0.60236067, y: 0.19320486, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -991,41 +1026,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!58 &1830872492
-CircleCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1830872487}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.5
 --- !u!1 &1873807357
 GameObject:
   m_ObjectHideFlags: 0
