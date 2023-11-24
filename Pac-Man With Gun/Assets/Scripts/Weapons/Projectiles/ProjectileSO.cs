@@ -28,6 +28,7 @@ public class ProjectileSO : ScriptableObject
                     BulletDamage(target, obj);
                 break;
             case MunitionType.explosive:
+                ExplosiveDamage(obj);
                 break;
             case MunitionType.pierce:
                 break;
@@ -38,7 +39,21 @@ public class ProjectileSO : ScriptableObject
     {
         Debug.Log("Doing Damage");
         // Destroy(target);
-        target.transform.parent.GetComponent<PacManEnemyBehavior>().TakeDamage();
+        target.transform.parent.GetComponent<PacManEnemyBehavior>().TakeDamage(damage);
+        Destroy(obj);
+    }
+
+    private void ExplosiveDamage(GameObject obj)
+    {
+        var col = Physics2D.OverlapCircleAll(obj.transform.position, damageRadius);
+        foreach (var collider in col)
+        {
+            if (collider.CompareTag(targetTag))
+            {
+                Debug.Log("Dealing Damage");
+                collider.GetComponentInParent<PacManEnemyBehavior>().TakeDamage(damage);
+            }
+        }
         Destroy(obj);
     }
 }

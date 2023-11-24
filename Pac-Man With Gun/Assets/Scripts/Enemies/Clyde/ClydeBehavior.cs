@@ -9,6 +9,7 @@ public class ClydeBehavior : PacManEnemyBehavior
     public AIDestinationSetter Agent => _agent;
     private EnemyBrain _brain;
     private Transform _player;
+    [SerializeField] private Transform followTarget;
 
     protected override void Start()
     {
@@ -18,6 +19,7 @@ public class ClydeBehavior : PacManEnemyBehavior
 
         _brain = new ClydeFSM();
         _brain.AddToDictionary("Player", _player);
+        _brain.AddToDictionary("Follow Target", followTarget);
         _brain.StartFSM("Chase", this);
     }
 

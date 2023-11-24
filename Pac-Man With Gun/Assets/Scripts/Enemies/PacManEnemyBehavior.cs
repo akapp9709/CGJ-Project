@@ -10,7 +10,7 @@ public class PacManEnemyBehavior : EnemyBehavior
     public LayerMask playerLayer;
     protected bool _playerDetected = false;
     [HideInInspector] public float delta;
-    public float deathDelay = 0;
+    public float deathDelay = 0.1f;
 
 
     protected override void OnDrawGizmos()
@@ -31,9 +31,9 @@ public class PacManEnemyBehavior : EnemyBehavior
         _playerDetected = Physics2D.OverlapCircle(transform.position, detectionRadius, playerLayer);
     }
 
-    public virtual void TakeDamage()
+    public virtual void TakeDamage(int dmg)
     {
-        health--;
+        health -= dmg;
 
         if (health <= 0)
         {
