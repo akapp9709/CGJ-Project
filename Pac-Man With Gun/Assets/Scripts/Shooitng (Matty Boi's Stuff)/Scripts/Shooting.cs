@@ -166,9 +166,8 @@ public class Shooting : MonoBehaviour
         }
     }
 
-    public void GetNewWeapon(string weaponName, WeaponSO weapon)
+    public void GetNewWeapon(string weaponName)
     {
-        _weapon = weapon;
         for (int i = 0; i < arsenal.Count; i++)
         {
             if (arsenal[i].weaponName == weaponName)
@@ -187,6 +186,7 @@ public class Shooting : MonoBehaviour
         }
 
         arsenal[index].weapon.SetActive(true);
+        _weapon = arsenal[index].stats;
     }
 
     [Serializable]
