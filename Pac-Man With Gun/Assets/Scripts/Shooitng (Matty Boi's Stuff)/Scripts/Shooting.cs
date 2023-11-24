@@ -43,10 +43,14 @@ public class Shooting : MonoBehaviour
         controls = new PacManWithGun();
         controls.Player.Enable();
         controls.Player.Fire.started += Fire;
+        controls.Player.Weapon1.started += SwitchToPistol;
+        controls.Player.Weapon2.started += SwitchToRifle;
+        controls.Player.Weapon3.started += SwitchToShotgun;
 
         SceneManager.sceneUnloaded += OnSceneUnload;
 
         _currentWeapon = arsenal[0];
+        arsenal[0].Unlock();
         SwitchToWeapon(0);
 
         playerLocalScale = playerSprite.transform.localScale;
@@ -172,6 +176,7 @@ public class Shooting : MonoBehaviour
         {
             if (arsenal[i].weaponName == weaponName)
             {
+                arsenal[i].Unlock();
                 SwitchToWeapon(i);
                 return;
             }
@@ -189,11 +194,35 @@ public class Shooting : MonoBehaviour
         _weapon = arsenal[index].stats;
     }
 
-    [Serializable]
-    private struct Weapon
+    private void SwitchToPistol(InputAction.CallbackContext context)
     {
+        if (arsenal[0].unlocked)
+            SwitchToWeapon(0);
+    }
+
+    private void SwitchToRifle(InputAction.CallbackContext context)
+    {
+        if (arsenal[1].unlocked)
+            SwitchToWeapon(1);
+    }
+
+    private void SwitchToShotgun(InputAction.CallbackContext context)
+    {
+        if (arsenal[2].unlocked)
+            SwitchToWeapon(2);
+    }
+
+    [Serializable]
+    public class Weapon
+    {
+        public bool unlocked;
         public GameObject weapon;
         public string weaponName;
         public WeaponSO stats;
+
+        public void Unlock()
+        {
+            unlocked = true;
+        }
     }
 }
