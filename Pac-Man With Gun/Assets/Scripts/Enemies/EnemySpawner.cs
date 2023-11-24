@@ -61,4 +61,15 @@ public class EnemySpawner : PacManEnemyBehavior
 
         return result;
     }
+
+    public override void TakeDamage(int dmg)
+    {
+        health -= dmg;
+
+        if (health <= 0)
+        {
+            FindObjectOfType<Shooting>().GetNewWeapon(rewardName);
+            Destroy(this.gameObject, deathDelay);
+        }
+    }
 }
