@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
@@ -17,11 +18,10 @@ public class Shooting : MonoBehaviour
 
     [Header("Weapon Stuff")]
     public WeaponSO _weapon;
-    public GameObject weapon;
+    public GameObject weaponObject;
     public GameObject weaponMuzzle;
-    public GameObject projectile_pistol;
-    public float pistoleForce;
-
+    private Weapon _currentWeapon;
+    [SerializeField] private List<Weapon> arsenal;
     public int ammoCount;
     private Vector3 refVelocity = Vector3.zero;
 
@@ -33,7 +33,7 @@ public class Shooting : MonoBehaviour
     private int _shotCounter;
 
     private PacManWithGun controls;
-    private Vector3 playerLocalScale;
+    private Vector3 playerLocalScale, weaponScale;
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +46,11 @@ public class Shooting : MonoBehaviour
 
         SceneManager.sceneUnloaded += OnSceneUnload;
 
+        _currentWeapon = arsenal[0];
+        SwitchToWeapon(0);
+
         playerLocalScale = playerSprite.transform.localScale;
+        weaponScale = weaponObject.transform.localScale;
     }
 
     private void OnSceneUnload(Scene current)
@@ -83,30 +87,29 @@ public class Shooting : MonoBehaviour
 
         Vector3 aimDirection = (mousePos - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
-        weapon.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
+        weaponObject.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
         // playerSpriteEyes.transform.eulerAngles = new Vector3(0, 0, angle);
 
         Vector3 aimLocalScale = Vector3.one;
         Vector3 playerScale = playerLocalScale;
-        Vector3 playerEyesLocalScale = Vector3.one;
         if (angle > 90 || angle < -90)
         {
-            // aimLocalScale.y = 1f;
+            aimLocalScale.y = -1f;
             // playerLocalScale.y = -1f;
             playerScale.x *= 1f;
             // playerEyesLocalScale.y = -1f;
         }
         else
         {
-            // aimLocalScale.y = -1f;
+            aimLocalScale.y = 1f;
             // playerLocalScale.y = +1f;
             playerScale.x *= -1f;
             // playerEyesLocalScale.y = +1f;
             // weapon.transform.eulerAngles *=
         }
 
-        // weapon.transform.localScale = aimLocalScale;
+        weaponObject.transform.localScale = new Vector3(weaponScale.x, weaponScale.y * aimLocalScale.y, weaponScale.z);
         playerSprite.transform.localScale = playerScale;
     }
 
@@ -127,7 +130,7 @@ public class Shooting : MonoBehaviour
         {
             Debug.Log(_shotCounter);
             _loaded = false;
-            _reloadTimer = new Timer(_weapon.reloadTime, Reload, (x) => Debug.Log("Reloading..."));
+            _reloadTimer = new Timer(_weapon.reloadTime, Reload);
         }
     }
 
@@ -161,5 +164,36 @@ public class Shooting : MonoBehaviour
             projectileRb.AddForce(_weapon.weaponForce * direction.normalized);
             yield return new WaitForSeconds(_weapon.projectileTimeDelay);
         }
+    }
+
+    public void GetNewWeapon(string weaponName, WeaponSO weapon)
+    {
+        _weapon = weapon;
+        for (int i = 0; i < arsenal.Count; i++)
+        {
+            if (arsenal[i].weaponName == weaponName)
+            {
+                SwitchToWeapon(i);
+                return;
+            }
+        }
+    }
+
+    private void SwitchToWeapon(int index)
+    {
+        foreach (var w in arsenal)
+        {
+            w.weapon.SetActive(false);
+        }
+
+        arsenal[index].weapon.SetActive(true);
+    }
+
+    [Serializable]
+    private struct Weapon
+    {
+        public GameObject weapon;
+        public string weaponName;
+        public WeaponSO stats;
     }
 }
