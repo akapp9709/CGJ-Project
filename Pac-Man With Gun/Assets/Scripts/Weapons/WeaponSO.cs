@@ -12,6 +12,6 @@ public class WeaponSO : ScriptableObject
     public float weaponCoolDown = 0.5f;
     public int magazineSize = 10;
     public float reloadTime = 2f;
-    public GameObject projectilePrefab;
+    public ProjectileSO projectile;
 
 }

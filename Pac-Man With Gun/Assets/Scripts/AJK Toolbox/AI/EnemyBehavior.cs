@@ -2,6 +2,10 @@ using UnityEngine;
 
 public class EnemyBehavior : MonoBehaviour
 {
+    protected virtual void OnDrawGizmos()
+    {
+
+    }
     // Start is called before the first frame update
     protected virtual void Start()
     {
