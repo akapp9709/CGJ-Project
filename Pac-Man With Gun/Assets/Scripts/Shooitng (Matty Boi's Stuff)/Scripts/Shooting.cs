@@ -10,6 +10,7 @@ public class Shooting : MonoBehaviour
     public GameObject playerSprite;
     public GameObject playerSpriteEyes;
     public GameObject crosshairs;
+    public Animator playerAnimator;
 
     [Header("Weapon Stuff")]
     public WeaponSO _weapon;
@@ -125,6 +126,7 @@ public class Shooting : MonoBehaviour
 
         for (int i = 0; i < _weapon.numberOfProjectiles; i++)
         {
+            playerAnimator.SetTrigger("Fire");
             float angle = startingAngle + ((i + 0.5f) * _weapon.projectileAngleOffset);
             var right = weaponMuzzle.transform.right;
             GameObject projectileGO = Instantiate(_weapon.projectilePrefab, weaponMuzzle.transform.position,

@@ -12,8 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aa6417cdf269fa141b4e3818dcbdc036, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  weaponForce: 100
+  weaponForce: 150
   numberOfProjectiles: 1
   projectileAngleOffset: 0
   projectileTimeDelay: 0
+  weaponCoolDown: 0.5
+  magazineSize: 10
+  reloadTime: 2
   projectilePrefab: {fileID: 2242244421496450483, guid: 22e55a2ebc66d3745b51c636a7023ead, type: 3}
