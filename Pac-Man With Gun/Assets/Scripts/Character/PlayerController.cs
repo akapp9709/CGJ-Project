@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
@@ -23,6 +24,15 @@ public class PlayerController : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * groundCheckDistance);
     }
 
+    private void OnSceneUnload(Scene scene)
+    {
+        _controls.Player.Move.performed -= Move;
+        _controls.Player.Jump.started -= Jump;
+        _controls.Player.Disable();
+
+        SceneManager.sceneUnloaded -= OnSceneUnload;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,6 +46,8 @@ public class PlayerController : MonoBehaviour
 
         _controls.Player.Move.performed += Move;
         _controls.Player.Jump.started += Jump;
+
+        SceneManager.sceneUnloaded += OnSceneUnload;
     }
 
     // Update is called once per frame

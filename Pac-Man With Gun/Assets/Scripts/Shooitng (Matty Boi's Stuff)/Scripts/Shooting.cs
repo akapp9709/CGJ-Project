@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 
 public class Shooting : MonoBehaviour
 {
@@ -29,14 +30,25 @@ public class Shooting : MonoBehaviour
     private bool _weaponCool = true, _loaded = true;
     private int _shotCounter;
 
+    private PacManWithGun controls;
+
     // Start is called before the first frame update
     void Start()
     {
         Cursor.lockState = CursorLockMode.Confined;
 
-        var controls = new PacManWithGun();
+        controls = new PacManWithGun();
         controls.Player.Enable();
         controls.Player.Fire.started += Fire;
+
+        SceneManager.sceneUnloaded += OnSceneUnload;
+    }
+
+    private void OnSceneUnload(Scene current)
+    {
+        controls.Player.Fire.started -= Fire;
+        controls.Player.Disable();
+        SceneManager.sceneUnloaded -= OnSceneUnload;
     }
 
     // Update is called once per frame
