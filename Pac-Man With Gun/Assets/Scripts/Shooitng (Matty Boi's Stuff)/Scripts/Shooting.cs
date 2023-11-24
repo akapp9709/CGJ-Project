@@ -33,6 +33,7 @@ public class Shooting : MonoBehaviour
     private int _shotCounter;
 
     private PacManWithGun controls;
+    private Vector3 playerLocalScale;
 
     // Start is called before the first frame update
     void Start()
@@ -44,6 +45,8 @@ public class Shooting : MonoBehaviour
         controls.Player.Fire.started += Fire;
 
         SceneManager.sceneUnloaded += OnSceneUnload;
+
+        playerLocalScale = playerSprite.transform.localScale;
     }
 
     private void OnSceneUnload(Scene current)
@@ -80,31 +83,31 @@ public class Shooting : MonoBehaviour
 
         Vector3 aimDirection = (mousePos - transform.position).normalized;
         float angle = Mathf.Atan2(aimDirection.y, aimDirection.x) * Mathf.Rad2Deg;
+        weapon.transform.rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
 
-        weapon.transform.eulerAngles = new Vector3(0, 0, angle);
-        playerSpriteEyes.transform.eulerAngles = new Vector3(0, 0, angle);
+        // playerSpriteEyes.transform.eulerAngles = new Vector3(0, 0, angle);
 
         Vector3 aimLocalScale = Vector3.one;
-        Vector3 playerLocalScale = Vector3.one;
+        Vector3 playerScale = playerLocalScale;
         Vector3 playerEyesLocalScale = Vector3.one;
         if (angle > 90 || angle < -90)
         {
-            aimLocalScale.y = -1f;
-            playerLocalScale.y = -1f;
-            playerLocalScale.x = -1f;
-
-            playerEyesLocalScale.y = -1f;
+            // aimLocalScale.y = 1f;
+            // playerLocalScale.y = -1f;
+            playerScale.x *= 1f;
+            // playerEyesLocalScale.y = -1f;
         }
         else
         {
-            aimLocalScale.y = +1f;
-            playerLocalScale.y = +1f;
-            playerLocalScale.x = +1f;
-
-            playerEyesLocalScale.y = +1f;
+            // aimLocalScale.y = -1f;
+            // playerLocalScale.y = +1f;
+            playerScale.x *= -1f;
+            // playerEyesLocalScale.y = +1f;
+            // weapon.transform.eulerAngles *=
         }
-        weapon.transform.localScale = aimLocalScale;
-        playerSprite.transform.localScale = playerLocalScale;
+
+        // weapon.transform.localScale = aimLocalScale;
+        playerSprite.transform.localScale = playerScale;
     }
 
     private void Fire(InputAction.CallbackContext context)
@@ -141,6 +144,7 @@ public class Shooting : MonoBehaviour
         for (int i = 0; i < _weapon.numberOfProjectiles; i++)
         {
             //Yes yes this is dumb, but it will work. Leave me alone.
+            /*noted, I wasnt gonna touch it XD*/
             playerPistolAnimator.SetTrigger("Fire");
             playerRifleAnimator.SetTrigger("Fire");
             playerShotgunAnimator.SetTrigger("Fire");

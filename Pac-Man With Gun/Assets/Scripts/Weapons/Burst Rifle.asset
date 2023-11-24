@@ -19,4 +19,4 @@ MonoBehaviour:
   weaponCoolDown: 0.8
   magazineSize: 6
   reloadTime: 0.5
-  projectilePrefab: {fileID: 2242244421496450483, guid: 22e55a2ebc66d3745b51c636a7023ead, type: 3}
+  projectile: {fileID: 11400000, guid: 6cad876bb60445d459a3f9ddaa64103d, type: 2}

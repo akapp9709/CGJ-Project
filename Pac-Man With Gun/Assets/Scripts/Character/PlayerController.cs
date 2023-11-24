@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     private PacManWithGun _controls;
     private Vector2 direction;
     private Rigidbody2D _rb;
+    private PlayerAnimationHandler _anim;
 
     [SerializeField] private float playerSpeed = 3, jumpForce = 10, inAirSpeed = 1.5f, groundCheckDistance = 0.1f;
     [SerializeField] private float gravity = 10;
@@ -48,6 +49,8 @@ public class PlayerController : MonoBehaviour
         _controls.Player.Jump.started += Jump;
 
         SceneManager.sceneUnloaded += OnSceneUnload;
+
+        _anim = GetComponentInChildren<PlayerAnimationHandler>();
     }
 
     // Update is called once per frame
@@ -55,6 +58,10 @@ public class PlayerController : MonoBehaviour
     {
         // Ground Check
         _grounded = Physics2D.Raycast(transform.position, Vector2.down, groundCheckDistance, groundCheckLayer);
+        _anim.SetAnimatorBool("isGrounded", _grounded);
+
+        var moveAmount = direction.magnitude;
+        _anim.SetAnimatorBool("isMoving", moveAmount > 0.3f);
 
         var currentSpeed = _grounded ? playerSpeed : inAirSpeed;
 
@@ -95,6 +102,12 @@ public class PlayerController : MonoBehaviour
         if (coyoteCounter >= 0)
         {
             _rb.AddForce(Vector3.up * jumpForce);
+            _anim.ActivateTrigger("jumpTrigger");
         }
+    }
+
+    public void Die()
+    {
+        _anim.ActivateTrigger("deathTrigger");
     }
 }

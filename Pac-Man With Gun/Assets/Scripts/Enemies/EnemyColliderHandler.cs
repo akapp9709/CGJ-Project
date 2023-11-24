@@ -15,16 +15,17 @@ public class EnemyColliderHandler : MonoBehaviour
 
     private void Update()
     {
-        if (_delayTimer != null)
-        {
-            _delayTimer.Tick(Time.deltaTime);
-        }
+
     }
 
     private void OnCollisionEnter2D(Collision2D other)
     {
         if (other.collider.CompareTag("Player"))
+        {
+            FindObjectOfType<PlayerController>().Die();
             StartCoroutine(ResetRoutine());
+        }
+
     }
 
     private IEnumerator ResetRoutine()
