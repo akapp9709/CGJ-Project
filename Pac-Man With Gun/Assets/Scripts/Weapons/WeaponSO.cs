@@ -13,5 +13,5 @@ public class WeaponSO : ScriptableObject
     public int magazineSize = 10;
     public float reloadTime = 2f;
     public ProjectileSO projectile;
-
+    public GameObject particleSystem;
 }
