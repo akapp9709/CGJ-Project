@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Shotgun
   m_EditorClassIdentifier: 
   weaponForce: 100
-  numberOfProjectiles: 4
-  projectileAngleOffset: 20
+  numberOfProjectiles: 6
+  projectileAngleOffset: 6
   projectileTimeDelay: 0
-  weaponCoolDown: 0.5
-  magazineSize: 4
-  reloadTime: 2
+  weaponCoolDown: 0.8
+  magazineSize: 5
+  reloadTime: 0.5
   projectilePrefab: {fileID: 2242244421496450483, guid: 22e55a2ebc66d3745b51c636a7023ead, type: 3}
