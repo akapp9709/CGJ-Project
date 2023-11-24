@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletBehaviour : MonoBehaviour
 {
+    public ProjectileSO projectileSO;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,11 +19,7 @@ public class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy" && gameObject.tag == "Pistol Bullet")
-        {
-            GetComponent<SpriteRenderer>().enabled = false; 
-            Destroy(gameObject, 0.1f);
-            Debug.Log("Hit Enemy");
-        }
+        projectileSO.DoDamage(collision.gameObject, collision.tag, this.gameObject);
+        Debug.Log("Enemy Hit");
     }
 }

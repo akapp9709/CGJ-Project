@@ -126,6 +126,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 226bcea3baa1f5b45abfb6fa82c25466, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  projectileSO: {fileID: 11400000, guid: 6cad876bb60445d459a3f9ddaa64103d, type: 2}
 --- !u!70 &5987548302397896390
 CapsuleCollider2D:
   m_ObjectHideFlags: 0

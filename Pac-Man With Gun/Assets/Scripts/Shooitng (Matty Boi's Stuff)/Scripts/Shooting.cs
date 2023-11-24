@@ -127,7 +127,7 @@ public class Shooting : MonoBehaviour
         {
             float angle = startingAngle + ((i + 0.5f) * _weapon.projectileAngleOffset);
             var right = weaponMuzzle.transform.right;
-            GameObject projectileGO = Instantiate(_weapon.projectilePrefab, weaponMuzzle.transform.position,
+            GameObject projectileGO = Instantiate(_weapon.projectile.projectilePrefab, weaponMuzzle.transform.position,
                     Quaternion.Euler(0f, 0f, angle) * weaponMuzzle.transform.rotation);
 
             Vector2 direction = Quaternion.Euler(0f, 0f, angle) * new Vector2(right.x, right.y);

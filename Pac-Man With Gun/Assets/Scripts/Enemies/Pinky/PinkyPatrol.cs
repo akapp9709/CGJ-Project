@@ -12,6 +12,9 @@ public class PinkyPatrol : IState
     private Transform _trans, _currentWaypoint;
     private EnemyBrain _machine;
     private float _wait;
+    private Timer _waitTimer;
+    private bool _waiting;
+    private int _pntIndex;
     public PinkyPatrol(EnemyFSM fsm)
     {
         _machine = (EnemyBrain)fsm;
@@ -39,6 +42,31 @@ public class PinkyPatrol : IState
 
     public void UpdateState(EnemyBehavior controller)
     {
-        throw new System.NotImplementedException();
+        TickTimer(_waitTimer, _behavior.delta);
+
+
+        if (_waiting)
+            return;
+        if (_agent.GetComponent<AIPath>().reachedEndOfPath)
+        {
+            _waiting = true;
+            _waitTimer = new Timer(_wait, NextPoint);
+        }
+
+    }
+
+    private void NextPoint()
+    {
+        _pntIndex++;
+        _pntIndex %= waypoints.Count;
+
+        _agent.target = waypoints[_pntIndex];
+        _waiting = false;
+    }
+
+    private void TickTimer(Timer timer, float delta)
+    {
+        if (timer != null)
+            timer.Tick(delta);
     }
 }
