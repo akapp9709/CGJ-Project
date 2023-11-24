@@ -20,3 +20,4 @@ MonoBehaviour:
   magazineSize: 10
   reloadTime: 0.2
   projectile: {fileID: 11400000, guid: 6cad876bb60445d459a3f9ddaa64103d, type: 2}
+  particleSystem: {fileID: 5475070723977196798, guid: bad59abbb5a35774db2bfc990b6e6a75, type: 3}

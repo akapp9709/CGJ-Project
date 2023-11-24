@@ -157,8 +157,6 @@ public class Shooting : MonoBehaviour
 
             Vector2 direction = Quaternion.Euler(0f, 0f, angle) * new Vector2(right.x, right.y);
 
-            _weapon.particleSystem.GetComponent<ParticleSystem>().Play();
-
             Rigidbody2D projectileRb = projectileGO.GetComponent<Rigidbody2D>();
             projectileRb.AddForce(_weapon.weaponForce * direction.normalized);
             yield return new WaitForSeconds(_weapon.projectileTimeDelay);
