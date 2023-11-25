@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Objects/Ammo Type")]
 public class ProjectileSO : ScriptableObject
@@ -37,6 +38,12 @@ public class ProjectileSO : ScriptableObject
 
     private void BulletDamage(GameObject target, GameObject obj)
     {
+        if (targetTag == "Player")
+        {
+            target.GetComponentInParent<PlayerController>().Die();
+            Destroy(obj);
+        }
+
         Debug.Log("Doing Damage");
         // Destroy(target);
         target.transform.parent.GetComponent<PacManEnemyBehavior>().TakeDamage(damage);
@@ -57,3 +64,4 @@ public class ProjectileSO : ScriptableObject
         Destroy(obj);
     }
 }
+

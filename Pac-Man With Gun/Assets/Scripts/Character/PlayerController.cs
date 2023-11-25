@@ -109,5 +109,12 @@ public class PlayerController : MonoBehaviour
     public void Die()
     {
         _anim.ActivateTrigger("deathTrigger");
+        StartCoroutine(ResetRoutine());
+    }
+
+    private IEnumerator ResetRoutine()
+    {
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 }
