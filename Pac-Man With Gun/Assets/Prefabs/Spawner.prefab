@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   detectionRadius: 0
   speed: 0
-  health: 2
+  health: 20
   playerLayer:
     serializedVersion: 2
     m_Bits: 0
@@ -189,3 +189,4 @@ MonoBehaviour:
     bias: 1
   - prefab: {fileID: 1301230248067953450, guid: 2de62c185cfab1f4f911d58408de2f6d, type: 3}
     bias: 9
+  rewardName: Rifle
