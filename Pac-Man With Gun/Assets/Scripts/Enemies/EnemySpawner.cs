@@ -12,7 +12,7 @@ public class EnemySpawner : PacManEnemyBehavior
         public GameObject prefab;
         public float bias;
     }
-
+    [SerializeField] private bool isWinSpwaner;
     [SerializeField] private float enemyTimeDelay = 2f;
     [SerializeField] private List<Enemy> enemies;
 
@@ -68,6 +68,12 @@ public class EnemySpawner : PacManEnemyBehavior
 
         if (health <= 0)
         {
+            if (isWinSpwaner)
+            {
+                /*Win Logic*/
+                Destroy(this.gameObject, deathDelay);
+                return;
+            }
             FindObjectOfType<Shooting>().GetNewWeapon(rewardName);
             Destroy(this.gameObject, deathDelay);
         }

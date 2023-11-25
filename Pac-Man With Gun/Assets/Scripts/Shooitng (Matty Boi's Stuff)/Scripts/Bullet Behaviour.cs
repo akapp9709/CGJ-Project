@@ -5,10 +5,11 @@ using UnityEngine;
 public class BulletBehaviour : MonoBehaviour
 {
     public ProjectileSO projectileSO;
+    public float lifeTime = 1;
     // Start is called before the first frame update
     void Start()
     {
-        Destroy(gameObject, 1f);
+        Destroy(gameObject, lifeTime);
     }
 
     // Update is called once per frame

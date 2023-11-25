@@ -23,14 +23,10 @@ public class EnemyColliderHandler : MonoBehaviour
         if (other.collider.CompareTag("Player"))
         {
             FindObjectOfType<PlayerController>().Die();
-            StartCoroutine(ResetRoutine());
+
         }
 
     }
 
-    private IEnumerator ResetRoutine()
-    {
-        yield return new WaitForSeconds(1f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-    }
+
 }
