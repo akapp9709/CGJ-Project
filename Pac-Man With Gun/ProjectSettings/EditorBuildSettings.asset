@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/EnemyPlayGround.unity
     guid: 30f9f703a4091de44913fbdaecd7a366
+  - enabled: 1
+    path: Assets/Scenes/StartScreen.unity
+    guid: 7dfd4b67ea70ad04b900be1f019d0280
+  - enabled: 1
+    path: Assets/Scenes/IntroScene.unity
+    guid: b25e76437e4a8484880e6e95a508f330
   m_configObjects: {}
