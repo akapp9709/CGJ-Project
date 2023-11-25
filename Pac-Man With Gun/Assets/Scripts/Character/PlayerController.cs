@@ -19,6 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float coyoteTime = 0.2f;
     private float coyoteCounter;
     private Timer _jumpTimer;
+    private bool _canJump = true;
 
     private void OnDrawGizmos()
     {
@@ -83,6 +84,13 @@ public class PlayerController : MonoBehaviour
         {
             _rb.AddForce(Vector3.down * gravity);
         }
+
+        TickTimer(_jumpTimer, Time.fixedDeltaTime);
+    }
+
+    private void TickTimer(Timer timer, float delta)
+    {
+        _jumpTimer.Tick(delta);
     }
 
     //Movement Method
@@ -99,10 +107,13 @@ public class PlayerController : MonoBehaviour
     {
 
         // only runs if player is grounded
-        if (coyoteCounter >= 0)
+        if (coyoteCounter >= 0 && _canJump)
         {
+            _canJump = false;
+            coyoteCounter = -1;
             _rb.AddForce(Vector3.up * jumpForce);
             _anim.ActivateTrigger("jumpTrigger");
+            _jumpTimer = new Timer(1f, () => _canJump = true);
         }
     }
 
