@@ -12,21 +12,12 @@ public class MovieEventHandler : MonoBehaviour
     {
         video = GetComponent<VideoPlayer>();
         video.Play();
-        StartCoroutine("WaitForMovieEnd");
+        // StartCoroutine("WaitForMovieEnd");
+
+        video.loopPointReached += OnMovieEnded;
     }
 
-
-    public IEnumerator WaitForMovieEnd()
-    {
-        while (video.isPlaying)
-        {
-            yield return new WaitForEndOfFrame();
-
-        }
-        OnMovieEnded();
-    }
-
-    void OnMovieEnded()
+    void OnMovieEnded(VideoPlayer vp)
     {
         SceneManager.LoadScene("MainScene");
     }
