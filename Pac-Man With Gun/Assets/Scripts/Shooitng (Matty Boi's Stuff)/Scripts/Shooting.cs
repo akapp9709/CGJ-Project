@@ -187,6 +187,7 @@ public class Shooting : MonoBehaviour
         }
 
         arsenal[index].weapon.SetActive(true);
+        _weapon = arsenal[index].stats;
     }
 
     [Serializable]
