@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 1044658485955806677}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.04, y: -3.41, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88970bcbe9e75984aa3e1b2cc3e328e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 0
+  detectionRadius: 30
   speed: 2
   health: 1
   playerLayer:
@@ -60,7 +60,7 @@ MonoBehaviour:
   deathDelay: 0.1
   followTarget: {fileID: 8655608463018546182}
   spawnPoint: {fileID: 5217163961963990549}
-  projectile: {fileID: 2242244421496450483, guid: 22e55a2ebc66d3745b51c636a7023ead, type: 3}
+  projectile: {fileID: 2242244421496450483, guid: dc242661a35f2af49ab0c1613c2e3f3f, type: 3}
   projectileSpeed: 5
   maxDistance: 0
   minDistance: 0

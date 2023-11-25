@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6704536852652976585}
   - component: {fileID: 3422646421444396293}
   - component: {fileID: 5376557681711570178}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Circle
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -185,9 +185,5 @@ MonoBehaviour:
   deathDelay: 0
   isWinSpwaner: 0
   enemyTimeDelay: 2
-  enemies:
-  - prefab: {fileID: 3165550679300998693, guid: a90ee4bc45a98fe409476a3373bd7df4, type: 3}
-    bias: 1
-  - prefab: {fileID: 1301230248067953450, guid: 2de62c185cfab1f4f911d58408de2f6d, type: 3}
-    bias: 9
+  enemies: []
   rewardName: Rifle

@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de0a44879acaa9b46bdf88141c8725b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detectionRadius: 7
+  detectionRadius: 30
   speed: 3
   health: 2
   playerLayer:
