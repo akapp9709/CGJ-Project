@@ -65,6 +65,7 @@ public class InkyChase : IState
         obj.GetComponent<Rigidbody2D>().velocity = _direction * _speed;
         _attackTimer = new Timer(_changeTime / 2f, Attack);
     }
+
     private void ChangePosition()
     {
         _moveTimer = new Timer(_changeTime, ChangePosition);
