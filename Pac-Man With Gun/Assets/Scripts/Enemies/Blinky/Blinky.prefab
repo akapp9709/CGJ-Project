@@ -30,8 +30,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 1.76, y: 1.76, z: 1.76}
+  m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 6189531825979167516}
   - {fileID: 5960398883464958736}
@@ -58,6 +58,7 @@ MonoBehaviour:
     m_Bits: 0
   delta: 0
   deathDelay: 0.1
+  anim: {fileID: 9185377822388037990}
   followTarget: {fileID: 5960398883464958736}
   spawnPoint: {fileID: 3123762366092352506}
   projectile: {fileID: 2242244421496450483, guid: dc242661a35f2af49ab0c1613c2e3f3f, type: 3}
@@ -414,5 +415,10 @@ PrefabInstance:
 --- !u!4 &744544137077685594 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3679271422185169516, guid: 677b3b1ac69f8d04a9c9c931cf792e38, type: 3}
+  m_PrefabInstance: {fileID: 4132689480656789302}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &9185377822388037990 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 5053961655939642960, guid: 677b3b1ac69f8d04a9c9c931cf792e38, type: 3}
   m_PrefabInstance: {fileID: 4132689480656789302}
   m_PrefabAsset: {fileID: 0}

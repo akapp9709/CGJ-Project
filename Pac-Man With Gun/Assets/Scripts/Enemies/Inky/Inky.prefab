@@ -58,6 +58,7 @@ MonoBehaviour:
     m_Bits: 0
   delta: 0
   deathDelay: 0.1
+  anim: {fileID: 558933870937884396}
   followTarget: {fileID: 8655608463018546182}
   spawnPoint: {fileID: 5217163961963990549}
   projectile: {fileID: 2242244421496450483, guid: dc242661a35f2af49ab0c1613c2e3f3f, type: 3}
@@ -411,6 +412,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ed8a2b2a9aa57ee43840534d5ee6864b, type: 3}
+--- !u!95 &558933870937884396 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 8746080475403284383, guid: ed8a2b2a9aa57ee43840534d5ee6864b, type: 3}
+  m_PrefabInstance: {fileID: 9124832423527033203}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &8795073398610018108 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 337640324285896271, guid: ed8a2b2a9aa57ee43840534d5ee6864b, type: 3}

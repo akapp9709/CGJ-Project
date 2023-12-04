@@ -30,6 +30,7 @@ public class InkyBehavior : PacManEnemyBehavior
         _brain.AddToDictionary("Speed", projectileSpeed);
         _brain.AddToDictionary("Projectile", projectile);
         _brain.AddToDictionary("Change Time", positionChangeTime);
+        _brain.AddToDictionary("Animator", anim);
         _brain.StartFSM("Chase", this);
     }
 

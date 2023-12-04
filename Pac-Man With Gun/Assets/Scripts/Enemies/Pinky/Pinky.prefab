@@ -201,6 +201,7 @@ MonoBehaviour:
     m_Bits: 64
   delta: 0
   deathDelay: 0
+  anim: {fileID: 3586147698978975674}
   waypoints:
   - {fileID: 0}
   - {fileID: 0}
@@ -382,5 +383,10 @@ PrefabInstance:
 --- !u!4 &939010785892716388 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3005361041971915796, guid: 5e2edf93201a4244ab234ace5a84a1a0, type: 3}
+  m_PrefabInstance: {fileID: 2647314643892953968}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3586147698978975674 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 1547453697877085386, guid: 5e2edf93201a4244ab234ace5a84a1a0, type: 3}
   m_PrefabInstance: {fileID: 2647314643892953968}
   m_PrefabAsset: {fileID: 0}

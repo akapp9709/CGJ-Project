@@ -11,6 +11,7 @@ public class PacManEnemyBehavior : EnemyBehavior
     protected bool _playerDetected = false;
     [HideInInspector] public float delta;
     public float deathDelay = 0.1f;
+    [SerializeField] protected Animator anim;
 
 
     protected override void OnDrawGizmos()
@@ -34,10 +35,13 @@ public class PacManEnemyBehavior : EnemyBehavior
     public virtual void TakeDamage(int dmg)
     {
         health -= dmg;
+        anim.SetTrigger("damageTrigger");
 
         if (health <= 0)
         {
             Destroy(this.gameObject, deathDelay);
+            anim.SetTrigger("deathTrigger"); 
         }
+
     }
 }

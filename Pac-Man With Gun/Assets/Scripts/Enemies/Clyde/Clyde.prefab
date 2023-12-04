@@ -141,6 +141,7 @@ MonoBehaviour:
     m_Bits: 64
   delta: 0
   deathDelay: 1
+  anim: {fileID: 8055522802480813822}
   followTarget: {fileID: 7803654045573244621}
 --- !u!1 &6578501846727435535
 GameObject:
@@ -389,5 +390,10 @@ PrefabInstance:
 --- !u!4 &7382515931045027593 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3094537717557518098, guid: 14b51854a93c19b448ab27a510298039, type: 3}
+  m_PrefabInstance: {fileID: 5512958485362999323}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &8055522802480813822 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2543128371012048613, guid: 14b51854a93c19b448ab27a510298039, type: 3}
   m_PrefabInstance: {fileID: 5512958485362999323}
   m_PrefabAsset: {fileID: 0}

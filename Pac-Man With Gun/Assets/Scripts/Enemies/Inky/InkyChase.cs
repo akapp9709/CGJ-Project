@@ -15,6 +15,7 @@ public class InkyChase : IState
 
     private Vector3 _direction;
     private Timer _attackTimer, _moveTimer;
+    private Animator _anim;
     public InkyChase(EnemyBrain brain)
     {
         _brain = brain;
@@ -29,6 +30,7 @@ public class InkyChase : IState
         _speed = (float)_brain.GetValue("Speed");
         _proj = (GameObject)_brain.GetValue("Projectile");
         _changeTime = (float)_brain.GetValue("Change Time");
+        _anim = (Animator)_brain.GetValue("Animator");
 
         _attackTimer = new Timer(_changeTime / 2f, Attack);
         _moveTimer = new Timer(_changeTime, ChangePosition);
@@ -63,6 +65,7 @@ public class InkyChase : IState
         var obj = GameObject.Instantiate(_proj, _spawn.position, Quaternion.identity, _spawn);
         obj.GetComponent<Rigidbody2D>().velocity = _direction * _speed;
         _attackTimer = new Timer(_changeTime / 2f, Attack);
+        _anim.SetTrigger("shootTrigger");
     }
 
     private void ChangePosition()
