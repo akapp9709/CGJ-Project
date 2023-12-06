@@ -90,7 +90,8 @@ public class PlayerController : MonoBehaviour
 
     private void TickTimer(Timer timer, float delta)
     {
-        _jumpTimer.Tick(delta);
+        if(_jumpTimer != null)
+            _jumpTimer.Tick(delta);
     }
 
     //Movement Method
